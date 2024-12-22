@@ -25,7 +25,6 @@ To get started with this project locally, follow these steps:
    Install Ionic CLI (if you don t have it installed) : npm install -g @ionic/cli
    Install Angular dependencies :  npm install @angular/fire firebase
 
-
 Usage
 Running the Application
 To run the app locally, use the following command:
