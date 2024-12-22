@@ -1,0 +1,128 @@
+# Ionic Movie App with Angular & Firebase
+
+This is a Movie Management app built using **Ionic** with **Angular**. It allows users to register, log in using **Firebase Authentication**, and manage movies with **Firebase Realtime Database**. Users can add, update, delete, and view their favorite movies. Additionally, users have a profile page to manage their account information.
+
+## Features
+- **User Authentication** with Firebase Authentication (Login & Registration)
+- **Movie CRUD** (Create, Read, Update, Delete) with Firebase Realtime Database
+- **Profile Page** for managing user account information
+- **Favorites System** for storing favorite movies
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+
+## Installation
+
+To get started with this project locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/karimamaaoui/ionic-movie-app.git
+   Navigate to the project directory: cd ionic-movie-app
+   Install dependencies: npm install
+   Install Ionic CLI (if you don t have it installed) : npm install -g @ionic/cli
+   Install Angular dependencies :  npm install @angular/fire firebase
+
+
+Usage
+Running the Application
+To run the app locally, use the following command:
+
+bash
+Copier le code
+ionic serve
+This will start the application and you can access it in your browser at http://localhost:8100.
+
+Using the App
+Sign Up: Register a new user with an email and password.
+Login: Log in with the credentials you used during registration.
+Manage Movies: Add, update, or delete movies.
+Favorites: Mark movies as favorites and view them.
+Profile Page: View and edit your profile.
+Authentication
+This app uses Firebase Authentication for user login and registration.
+
+Firebase Authentication Setup
+Register your app in the Firebase Console.
+Enable Email/Password Authentication in the Firebase Authentication section.
+Add Firebase configuration to your app in src/environments/environment.ts:
+typescript
+Copier le code
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: 'YOUR_API_KEY',
+    authDomain: 'YOUR_AUTH_DOMAIN',
+    databaseURL: 'YOUR_DATABASE_URL',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_STORAGE_BUCKET',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    appId: 'YOUR_APP_ID'
+  }
+};
+Firebase Setup
+To set up Firebase Realtime Database:
+
+Create a new Firebase project on Firebase Console.
+Add a Realtime Database to your Firebase project.
+Set up Firebase rules for the database:
+json
+Copier le code
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}
+Enable Firebase Authentication with Email/Password.
+Add Firebase SDK
+Install Firebase SDK by running:
+
+bash
+Copier le code
+npm install @angular/fire firebase
+Configure Firebase in your src/environments/environment.ts with the Firebase credentials.
+
+Project Structure
+The app is structured as follows:
+
+src/app/: Contains all the core logic and components for the app
+### `movie/`
+This folder contains movie-related components, services, and pages.
+
+- **`movie-list/`**: Displays a list of movies and allows the user to interact with them.
+  
+- **`update-movie/`**: Allows users to update movie details.
+ 
+### `auth/`
+Contains components and services for user authentication.
+
+- **`login/`**: Login page for existing users.
+ 
+- **`register/`**: Registration page for new users.
+ 
+- **`profile/`**: User profile page for managing account details.
+ 
+### `services/`
+Contains service classes that interact with Firebase for various operations like authentication, movie management, and more.
+
+- **`movie.service.ts`**: Provides methods for creating, reading, updating, and deleting movies in the Firebase Realtime Database.
+  
+  Example methods:
+  - `getMovies()`: Fetches the list of movies.
+  - `getMovieById(id: string)`: Retrieves details of a movie by its ID.
+  - `addMovie(movie: Movie)`: Adds a new movie to Firebase.
+  - `updateMovie(id: string, movie: Movie)`: Updates movie details in Firebase.
+  - `deleteMovie(id: string)`: Deletes a movie from Firebase.
+
+- **`auth.service.ts`**: Handles user authentication using Firebase Authentication.
+  - Methods include `login(email: string, password: string)`, `register(email: string, password: string)`, `logout()`, etc.
+
+
+
+### Acknowledgments
+- This app uses **Ionic Framework** and **Angular** for building the frontend.
+- **Firebase** is used for authentication and storing movie data.
+- Thanks to the Ionic and Firebase communities for their contributions and support.

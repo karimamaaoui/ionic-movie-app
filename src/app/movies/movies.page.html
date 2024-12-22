@@ -1,0 +1,62 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="addMovie()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input [(ngModel)]="title" name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Author</ion-label>
+      <ion-input [(ngModel)]="author" name="author" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit"  color="primary" [disabled]="!title || !author">Add Movie</ion-button>
+  </form>
+
+@if(allMovies ){
+
+
+  <ion-list class="movie-list">
+    @for(movie of allMovies; track $index){
+
+      
+    <ion-item class="movie-item">
+      <ion-label>
+        <h2 class="movie-title">{{ movie.title }}</h2>
+        <p class="movie-author">Author: {{ movie.author || 'Unknown' }}</p>
+  
+
+      </ion-label>
+
+      <ion-button 
+      slot="end" 
+      fill="solid" 
+      (click)="toggleFavorite(movie)">
+      <ion-icon [name]="movie.isFavorite ? 'heart' : 'heart-outline'" slot="icon-only"></ion-icon>
+    </ion-button>
+    
+         <!-- Update Button -->
+         <ion-button slot="end" fill="solid" color="tertiary" (click)="openUpdate(movie.id)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+  
+      <ion-button slot="end" fill="solid" color="danger" (click)="deleteMovie(movie.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+    }
+  </ion-list>
+}
+  @if(allMovies.length===0){
+
+    <div >
+      <p>No Movie added yet.</p>
+    </div>
+  }
+</ion-content>

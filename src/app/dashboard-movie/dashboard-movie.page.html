@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hi, {{ currentUserEmail }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToFavoritesPage()">
+        <ion-icon name="heart" slot="icon-only"></ion-icon> <!-- Heart icon for favorites -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container [ngSwitch]="selectedTab">
+    <app-list-movies *ngSwitchCase="'list-movies'"></app-list-movies> 
+    <app-profile *ngSwitchCase="'profile'"></app-profile> 
+    <app-movies *ngSwitchCase="'movies'"></app-movies>
+    <div *ngSwitchDefault>
+      <h2>Welcome to the Dashboard!</h2> 
+    </div>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- Bottom Navigation Segment -->
+    <ion-segment [(ngModel)]="selectedTab" (ionChange)="onTabChange()">
+      <ion-segment-button value="list-movies">
+        <ion-label>Home</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="profile">
+        <ion-label>Profile</ion-label>
+      </ion-segment-button>
+
+   
+      <ion-segment-button value="movies">
+        <ion-label>Movies</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>  
+</ion-footer>

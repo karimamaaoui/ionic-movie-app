@@ -1,0 +1,41 @@
+.search-container {
+    margin: 20px;
+  }
+  
+  /* In your global styles or component-specific styles */
+ion-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--footer-height)); /* Adjust based on your footer height */
+}
+
+app-list-books {
+  flex: 1; /* Allow this component to take available space */
+}
+
+  .loading {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  ion-list {
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  ion-item:hover {
+    background-color: #f0f0f0;
+  }
+  

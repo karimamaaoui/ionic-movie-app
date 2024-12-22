@@ -1,0 +1,24 @@
+<ion-content [fullscreen]="true">
+  <h2>Profile</h2>
+  
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Display user profile details -->
+  <ion-card *ngIf="user">
+    <ion-card-header>
+      <ion-card-title>{{ user.displayName || 'No Name' }}</ion-card-title>
+      <ion-card-subtitle>{{ user.email }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone:</strong> {{ user.phoneNumber || 'N/A' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Update Profile Button -->
+  <ion-button expand="full" (click)="goToUpdateProfile()">Update Profile</ion-button>
+</ion-content>
